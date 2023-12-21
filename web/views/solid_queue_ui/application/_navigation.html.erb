@@ -1,0 +1,11 @@
+<nav class="navigation">
+  <%= link_to(t("solid_queue_ui.navigation.back_to_app"), root_url, class: "button button--alt button--nav") if defined?(root_url) %>
+
+  <% SolidQueueUi::Namespace.new(namespace).resources_with_index_route.each do |resource| %>
+    <%= link_to(
+      display_resource_name(resource),
+      resource_index_route(resource),
+      class: "navigation__link navigation__link--#{nav_link_state(resource)}"
+    ) if accessible_action?(model_from_resource(resource), :index) %>
+  <% end %>
+</nav>
