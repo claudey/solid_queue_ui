@@ -1,3 +1,33 @@
-<h1>Home Page</h1>
-
-<script type="text/javascript" src="<%= root_path %>javascripts/chart.min.js"></script>
+<h1>Jobs</h1>
+<% if @sq_jobs.num_tuples.zero? %>
+  <p>No jobs found</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <td><strong>Job ID</strong></td>
+        <td><strong>Queue Name</strong></td>
+        <td><strong>Class Name</strong></td>
+        <td><strong>Arguments</strong></td>
+        <td><strong>Priority</strong></td>
+        <td><strong>Active Job ID</strong></td>
+        <td><strong>Scheduled At</strong></td>
+        <td><strong>Finished At</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sq_jobs.each do |page| %>
+        <tr>
+          <td><p><%= page['id'] %> </p></td>
+          <td><p><%= page['queue_name'] %> </p></td>
+          <td><p><%= page['class_name'] %> </p></td>
+          <td><p><%= page['arguments'] %> </p></td>
+          <td><p><%= page['priority'] %> </p></td>
+          <td><p><%= page['active_job_id'] %> </p></td>
+          <td><p><%= page['scheduled_at'] %> </p></td>
+          <td><p><%= page['finished_at'] %> </p></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
