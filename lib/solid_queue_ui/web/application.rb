@@ -51,6 +51,11 @@ module SolidQueueUi
       erb(:dashboard)
     end
 
+    # get "/jobs" do
+    #   @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_jobs ORDER BY priority ASC")
+    #   erb(:jobs)
+    # end
+
     def call(env)
       action = self.class.match(env)
       return [404, {Rack::CONTENT_TYPE => "text/plain", Web::X_CASCADE => "pass"}, ["Not Found"]] unless action
