@@ -48,6 +48,7 @@ module SolidQueueUi
     end
 
     get "/" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_jobs ORDER BY priority ASC")
       erb(:dashboard)
     end
 
