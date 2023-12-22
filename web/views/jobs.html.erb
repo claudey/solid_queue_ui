@@ -1,0 +1,41 @@
+<h1>Jobs</h1>
+<% if @sq_jobs.num_tuples.zero? %>
+  <p>No jobs found</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <td><p>id</p></td>
+        <td><p>site_id</p></td>
+        <td><p>local_url</p></td>
+        <td><p>external_url</p></td>
+        <td><p>created_at</p></td>
+        <td><p>updated_at</p></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sq_jobs.each do |page| %>
+      <!--
+        <p>id: <%= page['id'] %> </p>
+        <p>queue_name: <%= page['queue_name'] %> </p>
+        <p>class_name: <%= page['class_name'] %> </p>
+        <p>arguments: <%= page['arguments'] %> </p>
+        <p>priority: <%= page['priority'] %> </p>
+        <p>active_job_id: <%= page['active_job_id'] %> </p>
+        <p>scheduled_at: <%= page['scheduled_at'] %> </p>
+        <p>finished_at: <%= page['finished_at'] %> </p>
+      -->
+        <tr>
+          <td><p><%= page['id'] %> </p></td>
+          <td><p><%= page['site_id'] %> </p></td>
+          <td><p><%= page['local_url'] %> </p></td>
+          <td><p><%= page['external_url'] %> </p></td>
+          <td><p><%= page['created_at'] %> </p></td>
+          <td><p><%= page['updated_at'] %> </p></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<script type="text/javascript" src="<%= root_path %>javascripts/chart.min.js"></script>
