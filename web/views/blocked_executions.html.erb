@@ -1,3 +1,34 @@
 <h1>Blocked Executions</h1>
 
+<% if @sq_jobs.num_tuples.zero? %>
+  <p>No blocked executions</p>
+<% else %>
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Job ID</th>
+        <th>Queue Name</th>
+        <th>Priority</th>
+        <th>Concurrency Key</th>
+        <th>Expires</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sq_jobs.each do |page| %>
+        <tr>
+          <td><%= page['id'] %></td>
+          <td><%= page['job_id'] %></td>
+          <td><%= page['queue_name'] %></td>
+          <td><%= page['priority'] %></td>
+          <td><%= page['concurrency_key'] %></td>
+          <td><%= page['expires_at'] %></td>
+          <td><%= page['created_at'] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
 <script type="text/javascript" src="<%= root_path %>javascripts/chart.min.js"></script>

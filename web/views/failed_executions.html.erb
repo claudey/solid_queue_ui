@@ -1,3 +1,29 @@
 <h1>Failed Executions</h1>
 
+
+<% if @sq_jobs.num_tuples.zero? %>
+  <p>No failed executions</p>
+<% else %>
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Job ID</th>
+        <th>Error</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sq_jobs.each do |page| %>
+        <tr>
+          <td><%= page['id'] %></td>
+          <td><%= page['job_id'] %></td>
+          <td><%= page['error'] %></td>
+          <td><%= page['created_at'] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
 <script type="text/javascript" src="<%= root_path %>javascripts/chart.min.js"></script>

@@ -1,3 +1,26 @@
 <h1>Pauses</h1>
 
+<% if @sq_jobs.num_tuples.zero? %>
+  <p>No Pauses</p>
+<% else %>
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Queue Name</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sq_jobs.each do |page| %>
+        <tr>
+          <td><%= page['id'] %></td>
+          <td><%= page['queue_name'] %></td>
+          <td><%= page['created_at'] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
 <script type="text/javascript" src="<%= root_path %>javascripts/chart.min.js"></script>

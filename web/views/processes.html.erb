@@ -1,3 +1,36 @@
 <h1>Processes</h1>
 
+<% if @sq_jobs.num_tuples.zero? %>
+  <p>No processes found</p>
+<% else %>
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Kind</th>
+        <th>Last Heartbeat</th>
+        <th>Supervisor</th>
+        <th>PID</th>
+        <th>Hostname</th>
+        <th>Metadata</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sq_jobs.each do |page| %>
+        <tr>
+          <td><%= page['id'] %></td>
+          <td><%= page['kind'] %></td>
+          <td><%= page['last_heartbeat_at'] %></td>
+          <td><%= page['supervisor_id'] %></td>
+          <td><%= page['pid'] %></td>
+          <td><%= page['hostname'] %></td>
+          <td><%= page['metadata'] %></td>
+          <td><%= page['created_at'] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
 <script type="text/javascript" src="<%= root_path %>javascripts/chart.min.js"></script>
