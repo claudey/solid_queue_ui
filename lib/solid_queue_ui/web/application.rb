@@ -52,10 +52,55 @@ module SolidQueueUi
       erb(:dashboard)
     end
 
-    # get "/jobs" do
-    #   @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_jobs ORDER BY priority ASC")
-    #   erb(:jobs)
-    # end
+    get "/jobs" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_jobs ORDER BY priority ASC")
+      erb(:jobs)
+    end
+
+    get "/pauses" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_pauses ORDER BY created_at ASC")
+      erb(:pauses)
+    end
+
+    get "/processes" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_processes ORDER BY created_at ASC")
+      erb(:processes)
+    end
+
+    get "/executions" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_jobs ORDER BY priority ASC")
+      erb(:executions)
+    end
+
+    get "/executions/claimed" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_claimed_executions ORDER BY job_id ASC")
+      erb(:claimed_executions)
+    end
+
+    get "/executions/ready" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_ready_executions ORDER BY priority ASC")
+      erb(:ready_executions)
+    end
+
+    get "/executions/failed" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_failed_executions ORDER BY job_id ASC")
+      erb(:failed_executions)
+    end
+
+    get "/executions/blocked" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_blocked_executions ORDER BY priority ASC")
+      erb(:blocked_executions)
+    end
+
+    get "/executions/scheduled" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_scheduled_executions ORDER BY priority ASC")
+      erb(:scheduled_executions)
+    end
+
+    get "/semaphores" do
+      @sq_jobs = ActiveRecord::Base.connection.execute("SELECT * FROM solid_queue_semaphores ORDER BY expires_at ASC")
+      erb(:semaphores)
+    end
 
     def call(env)
       action = self.class.match(env)
