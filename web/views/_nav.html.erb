@@ -1,11 +1,34 @@
-<div>
-  <div class="navbar-toggle collapsed navbar-livereload">
-    <% if SolidQueueUi::Web.app_url %>
-      <a class="btn btn-inverse" href="<%= SolidQueueUi::Web.app_url %>"><%= t('BackToApp') %></a>
-    <% end %>
-  </div>
-  <a class="navbar-brand" href="<%= root_path %>">
-    <%= SolidQueueUi::NAME %>
-  </a>
-
-</div>
+<header class="navbar">
+  <section class="navbar-section">
+    <a class="navbar-brand" href="<%= root_path %>">
+      <%= SolidQueueUi::NAME %>
+    </a>
+    <a href="<%= "#{root_path}jobs" %>" class="navbar-link">
+      Jobs
+    </a>
+    <a href="<%= "#{root_path}pauses"%>" class="navbar-link">
+      Pauses
+    </a>
+    <a href="<%= "#{root_path}processes"%>" class="navbar-link">
+      Processes
+    </a>
+    <a href="<%= "#{root_path}executions/claimed"%>" class="navbar-link nav-sub-link">
+      Claimed
+    </a>
+    <a href="<%= "#{root_path}executions/ready"%>" class="navbar-link nav-sub-link">
+      Ready
+    </a>
+    <a href="<%= "#{root_path}executions/scheduled"%>" class="navbar-link nav-sub-link">
+      Scheduled
+    </a>
+    <a href="<%= "#{root_path}executions/blocked"%>" class="navbar-link nav-sub-link">
+      Blocked
+    </a>
+    <a href="<%= "#{root_path}executions/failed"%>" class="navbar-link nav-sub-link">
+      Failed
+    </a>
+    <a href="<%= "#{root_path}semaphores"%>" class="navbar-link">
+      Semaphores
+    </a>
+  </section>
+</header>
