@@ -2,36 +2,91 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-table,
-thead,
-td {
-  border: 1px solid #585858;
-}
-
-th {
-  border-bottom: 1px solid #585858;
-}
-
 table {
+  border-collapse: collapse;
   border-spacing: 0;
+  text-align: left;
+  width: 100%;
 }
 
-tbody {
+table.table-striped tbody tr:nth-of-type(odd) {
+  background: #f7f8f9;
+}
+
+table tbody tr.active,
+table.table-striped tbody tr.active {
+  background: #eef0f3;
+}
+
+table.table-hover tbody tr:hover {
+  background: #eef0f3;
+}
+
+table.table-scroll {
+  display: block;
+  overflow-x: auto;
+  padding-bottom: .75rem;
   white-space: nowrap;
 }
 
-thead,
-td {
-  padding: 0.5em 1em;
-  border-top-width: 0;
-  border-left-width: 0;
+table td,
+table th {
+  border-bottom: .05rem solid #dadee4;
+  padding: .6rem .4rem;
 }
 
-thead:last-child,
-td:last-child {
-  border-right-width: 0;
+table th {
+  border-bottom-width: .1rem;
 }
 
-tr:last-child td {
-  border-bottom-width: 0;
+
+.navbar {
+  align-items: stretch;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: stretch;
+  -ms-flex-pack: justify;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.navbar .navbar-section {
+  align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+  -ms-flex-align: center;
+}
+
+.navbar .navbar-section:not(:first-child):last-child {
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.navbar .navbar-center {
+  align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  -ms-flex-align: center;
+}
+
+.navbar .navbar-brand {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-link {
+  padding: 0 0.5em;
+}
+
+.nav-sub-link {
+  font-size: 14px;
+}
+
+.nav-sub-section {
+  background: #e5e5e5;
 }
