@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "solid_queue"
+  spec.add_dependency "solid_queue", ">= 0.1.1"
   spec.add_dependency "activerecord", ">= 6.0", "< 8.0"
   spec.add_dependency "sassc-rails", "~> 2.1"
 
