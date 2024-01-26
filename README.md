@@ -7,6 +7,8 @@ This gem heavily mimics the implementation of the Sidekiq UI. To view the jobs, 
 Update `config/routes.rb` to mount SolidQueueUI::Web like so:
 
 ```
+  require 'solid_queue_ui/web'
+
   Rails.application.routes.draw do
     mount SolidQueueUi::Web => '/solid_queue_ui'
 
